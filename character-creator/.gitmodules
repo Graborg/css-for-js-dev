@@ -1,0 +1,3 @@
+[submodule "character-crator"]
+	path = character-crator
+	url = git@github.com:Graborg/css-for-js-dev.git

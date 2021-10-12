@@ -1,0 +1,13 @@
+.maxWidthWrapper {
+  max-width: 1024px;
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+@media (max-width: 550px) {
+  .maxWidthWrapper {
+    padding: 0;
+  }
+}
