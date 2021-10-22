@@ -6,6 +6,21 @@ import { COLORS } from '../../constants';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
 
+const STYLES = {
+  small: {
+    fontSize: "14",
+    iconSize: "13",
+    height: "24",
+    borderSize: "1"
+  },
+  large: {
+    fontSize: "18",
+    iconSize: "20",
+    height: "36",
+    borderSize: "2"
+  }
+}
+
 const IconInput = ({
   label,
   icon,
@@ -13,32 +28,25 @@ const IconInput = ({
   size,
   placeholder,
 }) => {
-  let fontSize = size === "small" ? "14" : "18"
-  let iconSize = size === "small" ? "13" : "20"
-  let height = size === "small" ? "24" : "36"
-  let borderSize = size === "small" ? "1" : "2"
-
+  let styles = STYLES[size]
   return (
     <Wrapper> 
-      <WrappedIcon id={icon} strokeWidth={borderSize} size={iconSize} />
-      <Label for="IconInputId">{ label }</Label>
+      <WrappedIcon id={icon} strokeWidth={styles.borderSize} size={styles.iconSize} />
+      <VisuallyHidden> {label} </VisuallyHidden>
       <Input 
-        borderSize={borderSize} 
-        width={width} 
-        height={height} 
-        style={{'--font-size': (fontSize / 16) + "rem"}} 
-        id="IconInputId" 
-        iconSize={iconSize} 
-        placeholder={placeholder}/>
+        placeholder={placeholder}
+        style={{
+          '--width': width + 'px',
+          '--height': styles.height / 16 + 'rem',
+          '--font-size': styles.fontSize / 16 + 'rem',
+          '--border-size': styles.borderSize + "px",
+        }}/>
     </Wrapper>
   )
 };
 
-let Label = styled.label`
-  display: none;
-`
-
 let WrappedIcon = styled(Icon)`
+  position: absolute;
   display: inline-block;
   bottom: 0;
   top: 0;
@@ -46,16 +54,15 @@ let WrappedIcon = styled(Icon)`
 ` 
 
 let Input = styled.input`
-  padding-left: calc(${p => p.iconSize}px / 0.7);
-  height: ${p => p.height}px;
-  width: ${p => p.width}px;
+  height: var(--height); 
+  width: var(--width); 
+  padding-left: var(--height); 
   border: none;
-  border-bottom: ${p => p.borderSize}px solid black; 
+  border-bottom: solid var(--border-size) ${COLORS.black}; 
   outline-offset: 2px;
   font-size: var(--font-size);
   font-weight: 700;
   color: inherit;
-  background-color: transparent; 
 
   &::placeholder {
     font-weight: 400;
@@ -64,7 +71,6 @@ let Input = styled.input`
 
 let Wrapper = styled.div`
   position: relative;
-  display: block;
   color: ${COLORS.gray500};
 
   &:hover {
