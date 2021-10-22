@@ -19,11 +19,18 @@ const IconInput = ({
   let borderSize = size === "small" ? "1" : "2"
 
   return (
-  <Wrapper height={height} width={width} borderSize={borderSize}>
-    <WrappedIcon id={icon} strokeWidth={borderSize} size={iconSize} />
-    <Label for="IconInputId">{ label }</Label>
-    <Input style={{'--font-size': fontSize + "px"}} id="IconInputId" iconSize={iconSize} placeholder={placeholder}/>
-  </Wrapper>
+    <Wrapper> 
+      <WrappedIcon id={icon} strokeWidth={borderSize} size={iconSize} />
+      <Label for="IconInputId">{ label }</Label>
+      <Input 
+        borderSize={borderSize} 
+        width={width} 
+        height={height} 
+        style={{'--font-size': (fontSize / 16) + "rem"}} 
+        id="IconInputId" 
+        iconSize={iconSize} 
+        placeholder={placeholder}/>
+    </Wrapper>
   )
 };
 
@@ -33,42 +40,36 @@ let Label = styled.label`
 
 let WrappedIcon = styled(Icon)`
   display: inline-block;
-  position:absolute;
   bottom: 0;
   top: 0;
   margin: auto;
-  color: ${COLORS.gray700};
 ` 
 
 let Input = styled.input`
-  position: absolute;
   padding-left: calc(${p => p.iconSize}px / 0.7);
-  bottom: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  height: ${p => p.height}px;
+  width: ${p => p.width}px;
   border: none;
-
+  border-bottom: ${p => p.borderSize}px solid black; 
+  outline-offset: 2px;
   font-size: var(--font-size);
-  outline: none;
-  margin-top: auto;
-  margin-bottom: auto;
-  color: ${COLORS.gray500};
+  font-weight: 700;
+  color: inherit;
   background-color: transparent; 
-  &:not(:placeholder-shown) {
-    font-weight: 700;
-  }
 
-  &:not(:placeholder-shown):hover {
-    color: ${COLORS.black}
+  &::placeholder {
+    font-weight: 400;
   }
 `
 
 let Wrapper = styled.div`
-  border-bottom: ${p => p.borderSize}px solid black; 
   position: relative;
-  height: ${p => p.height}px;
-  width: ${p => p.width}px;
+  display: block;
+  color: ${COLORS.gray500};
+
+  &:hover {
+    color: ${COLORS.black}
+  }
 `
 
 export default IconInput;
