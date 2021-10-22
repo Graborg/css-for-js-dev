@@ -42,7 +42,7 @@ let WrappedIcon = styled(Icon)`
 
 let Input = styled.input`
   position: absolute;
-  left: calc(${p => p.iconSize}px / 0.7);
+  padding-left: calc(${p => p.iconSize}px / 0.7);
   bottom: 0;
   top: 0;
   width: 100%;
@@ -54,7 +54,7 @@ let Input = styled.input`
   margin-top: auto;
   margin-bottom: auto;
   color: ${COLORS.gray500};
-  
+  background-color: transparent; 
   &:not(:placeholder-shown) {
     font-weight: 700;
   }
