@@ -22,8 +22,9 @@ const Label = styled.label`
 const Input = styled.input`
   border: none;
   background: transparent;
-  border-bottom: 1px solid ${COLORS.gray[300]};
   padding-left: 24px;
+  padding: 6px 0 6px 24px;
+  border-bottom: 1px solid ${COLORS.gray[300]};
   font-size: 0.875rem;
   color: ${COLORS.gray[100]};
   outline-offset: 4px;
