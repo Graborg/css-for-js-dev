@@ -31,16 +31,24 @@ const ShoeCard = ({
       ? 'new-release'
       : 'default'
 
+
+  let PriceComponent = variant === "on-sale" ? SalePrice : Price
+  const variantToShownText = variant => variant === "new-release" ? "Just Released!" : "Sale"
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
+          { variant !== "default" && 
+          <Variant style={{
+            '--background-color': variant === "new-release" ? COLORS.secondary : COLORS.primary }} >  
+            {variantToShownText(variant)} 
+          </Variant> }
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price>{formatPrice(price)}</Price>
+          <PriceComponent>{formatPrice(price)}</PriceComponent>
         </Row>
         <Row>
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
@@ -50,6 +58,15 @@ const ShoeCard = ({
   );
 };
 
+const Variant = styled.p`
+  position: absolute;
+  top: 12px;
+  right: -4px;
+  padding: 6px 10px;
+  background-color: var(--background-color);
+  color: white;
+  border-radius: 2px;
+`
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
@@ -57,7 +74,6 @@ const Link = styled.a`
 `;
 
 const Wrapper = styled.article`
-
 `;
 
 const ImageWrapper = styled.div`
@@ -69,6 +85,7 @@ const Image = styled.img`
 `;
 
 const Row = styled.div`
+  display: flex;
   font-size: 1rem;
 `;
 
@@ -77,13 +94,15 @@ const Name = styled.h3`
   color: ${COLORS.gray[900]};
 `;
 
-const Price = styled.span``;
+const Price = styled.span`
+  margin-left: auto;
+`;
 
 const ColorInfo = styled.p`
   color: ${COLORS.gray[700]};
 `;
 
-const SalePrice = styled.span`
+const SalePrice = styled(Price)`
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.primary};
 `;

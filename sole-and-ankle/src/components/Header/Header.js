@@ -35,10 +35,12 @@ const MainHeader = styled.div`
 `;
 
 const Nav = styled.nav`
+  position: absolute;
+  left: 0;
+  right: 0;
   margin-left: auto;
   margin-right: auto;
-  gap: 48px;
-  display:flex;
+  width: 700px;
 `;
 
 const NavLink = styled.a`
@@ -47,6 +49,7 @@ const NavLink = styled.a`
   text-decoration: none;
   color: ${COLORS.gray[900]};
   font-weight: ${WEIGHTS.medium};
+  margin-right: 48px;
 
   font-family: Raleway;
   &:first-of-type {
