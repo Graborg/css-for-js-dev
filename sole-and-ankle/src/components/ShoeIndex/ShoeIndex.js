@@ -46,6 +46,7 @@ const Wrapper = styled.div`
   width: 100%;
   position: relative;
   display: flex;
+  align-items: baseline;
   flex-direction: row-reverse;
 `;
 
@@ -60,6 +61,7 @@ const MainColumn = styled.div`
 
 const Header = styled.header`
   display: flex;
+  align-items: baseline;
 `;
 
 const Title = styled.h2`

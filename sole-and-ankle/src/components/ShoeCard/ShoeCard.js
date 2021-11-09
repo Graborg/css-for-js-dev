@@ -32,8 +32,8 @@ const ShoeCard = ({
       : 'default'
 
 
-  let PriceComponent = variant === "on-sale" ? SalePrice : Price
   const variantToShownText = variant => variant === "new-release" ? "Just Released!" : "Sale"
+
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
@@ -48,10 +48,14 @@ const ShoeCard = ({
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <PriceComponent>{formatPrice(price)}</PriceComponent>
+          <Price style={{
+             '--text-decoration': variant === 'on-sale' ? 'line-through' : undefined,
+             '--color': variant === 'on-sale' ? COLORS.gray[700] : undefined,
+          }} >{formatPrice(price)}</Price>
         </Row>
         <Row>
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
+          {variant === "on-sale" && (<SalePrice>{formatPrice(salePrice)}</SalePrice>)}
         </Row>
       </Wrapper>
     </Link>
@@ -62,10 +66,14 @@ const Variant = styled.p`
   position: absolute;
   top: 12px;
   right: -4px;
-  padding: 6px 10px;
+  padding: 0px 10px;
   background-color: var(--background-color);
   color: white;
   border-radius: 2px;
+  font-size: ${14/18}rem;
+  font-weight: ${WEIGHTS.bold}; 
+  line-height: 32px;
+  height: 32px;
 `
 const Link = styled.a`
   text-decoration: none;
@@ -95,6 +103,8 @@ const Name = styled.h3`
 `;
 
 const Price = styled.span`
+  color: var(--color);
+  text-decoration: var(--text-decoration);
   margin-left: auto;
 `;
 
