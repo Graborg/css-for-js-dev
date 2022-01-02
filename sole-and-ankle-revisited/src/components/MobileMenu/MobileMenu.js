@@ -76,6 +76,7 @@ const Close = styled.button`
 `
 
 const Wrapper = styled.div`
+  box-shadow: -120px -1px 0 1px rgba(96, 100, 108, 0.8);
   position: fixed;
   right: 0;
   top: 0;
