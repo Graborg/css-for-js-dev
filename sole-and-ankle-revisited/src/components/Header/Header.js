@@ -12,7 +12,9 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
-      <SuperHeader />
+      <SuperHeaderFilter>
+        <SuperHeader />
+      </SuperHeaderFilter>
       <MainHeader>
         <Side>
           <Logo />
@@ -39,32 +41,32 @@ const Header = () => {
     </HeaderWrapper>
   );
 };
+
+const SuperHeaderFilter = styled.div`
+  @media ${props => props.theme.queries.tabletAndDown} {
+    border-top: solid 4px;
+    display: none;
+  }
+`
+
 const MobileNav = styled.div`
-  display: flex;
-  gap: 60px;
+  display: none;
+
+  @media ${props => props.theme.queries.tabletAndDown} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+  }
+
   @media ${props => props.theme.queries.phoneAndDown} {
     gap: 20px;
   }
-  justify-content: space-between;
-  align-items: center;
 `
 
 const HeaderWrapper = styled.header`
-  & > div:first-child {
-    display: flex
-  }
-  & > div:nth-child(2) {
-    display: flex
-  }
-  
   @media ${props => props.theme.queries.tabletAndDown} {
     border-top: solid 4px;
-    & > div:first-child {
-      display: none;
-    }
-  & > div:nth-child(3) {
-    display: flex
-  }
   }
 `
 
