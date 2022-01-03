@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
-import { QUERIES, COLORS } from '../../constants';
+import { QUERIES } from '../../constants';
 
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
@@ -43,7 +43,7 @@ const Nav = styled.nav`
     font-weight: 500;
   }
   & a:first-child {
-    color: ${COLORS.secondary} ;
+    color: var(--color-secondary);
   }
   display: flex;
   flex-direction: column;
@@ -54,7 +54,7 @@ const Nav = styled.nav`
 const Footer = styled.footer`
   & a {
     text-decoration: none;
-    color: ${COLORS.gray[700]};
+    color: var(--color-gray-700);
   }
   display: flex;
   flex-direction: column;
