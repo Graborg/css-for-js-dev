@@ -88,7 +88,7 @@ const Overlay = styled(DialogOverlay)`
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(96, 100, 108, 0.8);
+  background: var(--color-backdrop); 
 `
 
 export default MobileMenu;

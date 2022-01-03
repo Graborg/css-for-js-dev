@@ -5,7 +5,7 @@ const GlobalStyles = createGlobalStyle`
    v2.0 | 20110126
    License: none (public domain)
 */
-:root {
+	:root {
 	--color-white: hsl(0deg 0% 100%);
 	--color-gray-100: hsl(185deg 5% 95%);
 	--color-gray-300: hsl(190deg 5% 80%);
@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
   --color-gray-900: hsl(220deg 3% 20%);
   --color-primary: hsl(340deg 65% 47%);
 	--color-secondary: hsl(240deg 60% 63%);
+	--color-backdrop: hsl(220deg, 5%, 40%, 0.8);
 }
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
