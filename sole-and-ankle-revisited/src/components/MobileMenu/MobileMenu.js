@@ -16,7 +16,10 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 
   return (
     <Wrapper>
-      <Close onClick={onDismiss}/>
+      <CloseButton onClick={onDismiss}>
+        <Icon aria-hidden id="close" size={20} />
+        <VisuallyHidden>Close</VisuallyHidden>
+      </CloseButton>
       <Nav>
         <a href="/sale">Sale</a>
         <a href="/new">New&nbsp;Releases</a>
@@ -60,19 +63,12 @@ const Footer = styled.footer`
   margin-top: auto;
 `
 
-const Close = styled.button`
+const CloseButton = styled.button`
   background: white;
-  height: 25px;
-  width: 25px;
-  border: 0;
+  border: none;
   position: absolute;
-  top: -2px;
+  top: 32px;
   right: 22px;
-  &:after {
-    color: black;
-    font-size: 50px; 
-    content: "×";
-  }
 `
 
 const Wrapper = styled.div`

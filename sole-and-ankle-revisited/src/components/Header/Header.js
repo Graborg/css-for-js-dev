@@ -29,11 +29,7 @@ const Header = () => {
         <MobileNav>
         <Icon id="shopping-bag" strokeWidth={2} size={20} />
         <Icon id="search" strokeWidth={2} size={20} />
-        <HamburgerButton onClick={() => setShowMobileMenu(true)}>
-          <HamburgerLine/>
-          <HamburgerLine/>
-          <HamburgerLine/>
-        </HamburgerButton>
+        <Icon id="menu" onClick={() => setShowMobileMenu(true)}/>
         </MobileNav>
       </MainHeader>
       <MobileMenu
@@ -50,22 +46,7 @@ const MobileNav = styled.div`
     gap: 20px;
   }
   justify-content: space-between;
-`
-
-const HamburgerLine = styled.span`
-  display: inline-block;
-  border-radius: 2px;
-  width: 18px;
-  height: 2px;
-  background: black;
-`
-
-const HamburgerButton = styled.button`
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  gap: 4px;
-  border: 0;
+  align-items: center;
 `
 
 const HeaderWrapper = styled.header`
