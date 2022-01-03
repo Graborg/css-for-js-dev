@@ -5,6 +5,8 @@ import { WEIGHTS } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import UnstyledButton from '../UnstyledButton'
+import VisuallyHidden from '../VisuallyHidden'
 import Icon from '../Icon';
 
 const Header = () => {
@@ -29,9 +31,18 @@ const Header = () => {
         </Nav>
         <Side />
         <MobileNav>
-        <Icon id="shopping-bag" strokeWidth={2} size={20} />
-        <Icon id="search" strokeWidth={2} size={20} />
-        <Icon id="menu" onClick={() => setShowMobileMenu(true)}/>
+          <UnstyledButton>
+            <VisuallyHidden> Shopping bag</VisuallyHidden> 
+            <Icon id="shopping-bag" strokeWidth={2} size={20} />
+          </UnstyledButton>
+          <UnstyledButton>
+            <VisuallyHidden> Search </VisuallyHidden> 
+            <Icon id="search" strokeWidth={2} size={20} />
+          </UnstyledButton>
+          <UnstyledButton onClick={() => setShowMobileMenu(true)} >
+            <VisuallyHidden> Menu </VisuallyHidden> 
+            <Icon id="menu" /> 
+          </UnstyledButton>
         </MobileNav>
       </MainHeader>
       <MobileMenu
