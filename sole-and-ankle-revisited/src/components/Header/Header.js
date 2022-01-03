@@ -20,11 +20,11 @@ const Header = () => {
           <Logo />
         </Side>
         <Nav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
+          <NavLink href="/sale">a vendre</NavLink>
+          <NavLink href="/new">nouvelles</NavLink>
+          <NavLink href="/men">hommes</NavLink>
+          <NavLink href="/women">femmes</NavLink>
+          <NavLink href="/kids">les enfants</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
         <Side />
@@ -71,9 +71,11 @@ const HeaderWrapper = styled.header`
 `
 
 const MainHeader = styled.div`
+  overflow-x: auto;
+  overflow-y: hidden;
   display: flex;
   align-items: baseline;
-  padding: 18px 32px;
+  padding: 18px 0 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
   @media ${props => props.theme.queries.phoneAndDown} {
@@ -83,8 +85,13 @@ const MainHeader = styled.div`
 
 const Nav = styled.nav`
   display: flex;
-  gap: 48px;
-  margin: 0px 48px;
+  gap: clamp(
+    1rem,
+    9vw - 3.75rem,
+    5rem
+  );
+  margin: 0 0 0 48px;
+
   @media ${props => props.theme.queries.tabletAndDown} {
     display: none;
   }
@@ -100,6 +107,7 @@ const NavLink = styled.a`
   text-decoration: none;
   color: ${COLORS.gray[900]};
   font-weight: ${WEIGHTS.medium};
+  min-width: max-content;
 
   &:first-of-type {
     color: ${COLORS.secondary};
