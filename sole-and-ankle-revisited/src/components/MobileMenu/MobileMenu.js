@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
-import { QUERIES } from '../../constants';
+import { QUERIES, WEIGHTS } from '../../constants';
 
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
@@ -17,6 +17,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
           <Icon aria-hidden id="close" size={20} />
           <VisuallyHidden>Close</VisuallyHidden>
         </CloseButton>
+        <Filler />
         <Nav>
           <a href="/sale">Sale</a>
           <a href="/new">New&nbsp;Releases</a>
@@ -34,39 +35,49 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
     </Overlay>
   );
 };
+
 const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
   & a {
     text-decoration: none;
     color: black;
     text-transform: uppercase;
     line-height: 21px;
-    font-weight: 500;
+    font-weight: ${WEIGHTS.normal};
+    font-size: 1.125rem;
   }
+
   & a:first-child {
     color: var(--color-secondary);
   }
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: auto;
+
+`
+
+const Filler = styled.div`
+  flex: 1;
 `
 
 const Footer = styled.footer`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
   & a {
     text-decoration: none;
     color: var(--color-gray-700);
   }
-  display: flex;
-  flex-direction: column;
-  margin-top: auto;
 `
 
 const CloseButton = styled.button`
   background: white;
   border: none;
   position: absolute;
-  top: 28px;
-  right: 22px;
+  top: 10px;
+  right: 0;
+  padding: 16px;
 `
 
 const Content = styled(DialogContent)`
@@ -76,9 +87,8 @@ const Content = styled(DialogContent)`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 80%;
-  padding-left: 32px;
-  padding-bottom: 32px;
+  width: 300px;
+  padding: 32px;
   background: white;
 `
 

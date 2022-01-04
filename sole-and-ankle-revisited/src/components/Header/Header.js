@@ -31,10 +31,10 @@ const Header = () => {
         </Nav>
         <Side />
         <MobileNav>
-          <UnstyledButton>
+          <ShoppingBagButton>
             <VisuallyHidden> Shopping bag</VisuallyHidden> 
             <Icon id="shopping-bag" strokeWidth={2} size={20} />
-          </UnstyledButton>
+          </ShoppingBagButton>
           <UnstyledButton>
             <VisuallyHidden> Search </VisuallyHidden> 
             <Icon id="search" strokeWidth={2} size={20} />
@@ -52,6 +52,10 @@ const Header = () => {
     </HeaderWrapper>
   );
 };
+
+const ShoppingBagButton = styled(UnstyledButton)`
+  transform: translateX(-2px)
+`
 
 const SuperHeaderFilter = styled.div`
   @media ${props => props.theme.queries.tabletAndDown} {
@@ -82,13 +86,16 @@ const HeaderWrapper = styled.header`
 `
 
 const MainHeader = styled.div`
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto;
   display: flex;
   align-items: baseline;
   padding: 18px 0 18px 32px;
-  height: 72px;
   border-bottom: 1px solid var(--color-gray-300);
+
+  @media ${props => props.theme.queries.tabletAndDown} {
+    padding: 18px 32px;
+  }
+
   @media ${props => props.theme.queries.phoneAndDown} {
     padding: 20px 19px;
   }
