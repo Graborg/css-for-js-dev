@@ -5,20 +5,21 @@ const Hero = () => {
   return (
     <Wrapper>
       <picture>
-        <source 
-          type="image/avif" 
+        <source
+          type="image/avif"
           srcset="
             /images/hero-img.avif 1x,
             /images/hero-img@2x.avif 2x,
             /images/hero-img@3x.avif 3x
         " />
-        <HeroImage 
-          src="/images/hero-img.jpg" 
+        <HeroImage
+          src="/images/hero-img.jpg"
+          alt="hero-image serious looking cat"
           srcset="
             /images/hero-img.png 1x,
             /images/hero-img@2x.png 2x,
             /images/hero-img@3x.png 3x
-          "        
+          "
         />
       </picture>
       <Swoop src="/swoop.svg" />
