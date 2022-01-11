@@ -51,20 +51,20 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const Tags = styled.p`
+const Tags = styled.ul`
   white-space: nowrap;
   overflow: hidden;
   padding: 4px 0;
   text-overflow: ellipsis;
 `;
 
-const Tag = styled.span`
-  padding: 6px 8px;
+const Tag = styled.li`
+  display: inline;
+  padding: 4px 8px;
   background: var(--color-gray-300);
   font-size: 0.875rem;
   font-weight: 475;
-  color: var(--color-gray-800);
-  margin-right: 5px;
+  margin-right: 8px;
 `;
 
 export default PhotoGridItem;
