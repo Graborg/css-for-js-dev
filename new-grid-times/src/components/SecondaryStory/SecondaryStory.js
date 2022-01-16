@@ -1,17 +1,24 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-const SecondaryStory = ({ id, title, image, location, abstract }) => {
+const SecondaryStory = ({id, title, image, location, abstract}) => {
   return (
-    <a href={`/story/${id}`}>
+    <StoryLink href={`/story/${id}`}>
       <Wrapper>
         <Image alt={image.alt} src={image.src} />
         <Heading>{title}</Heading>
         <Abstract>{abstract}</Abstract>
       </Wrapper>
-    </a>
+    </StoryLink>
   );
 };
+
+const StoryLink = styled.a`
+  padding: 16px 0;
+  &:not(:nth-child(1)) {
+    border-top: 1px solid var(--color-gray-300);
+  }
+`
 
 const Wrapper = styled.article`
   display: grid;
@@ -45,6 +52,11 @@ const Abstract = styled.p`
   grid-area: abstract;
   font-size: 1rem;
   white-space: pre-wrap;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export default SecondaryStory;
