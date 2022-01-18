@@ -22,6 +22,9 @@ const StoryLink = styled.a`
   &:not(:nth-child(1)) {
     border-top: 1px solid var(--color-gray-300);
   }
+  &:last-child {
+    padding-bottom: 0;
+  }
 `
 
 const Wrapper = styled.article`
