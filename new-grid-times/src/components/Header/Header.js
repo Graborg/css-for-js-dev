@@ -29,22 +29,22 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
-        <ActionGroup>
+        <DesktopActionGroup>
           <button>
             <Search size={24} />
           </button>
           <button>
             <Menu size={24} />
           </button>
-        </ActionGroup>
+        </DesktopActionGroup>
         <Logo />
         <SubscribeActionGroup>
           <Button >
             subscribe
           </Button>
-          <a href="">
+          <SubLink href="">
             Already a subscriber?
-          </a>
+          </SubLink>
         </SubscribeActionGroup>
       </MainHeader>
     </header >
@@ -52,12 +52,13 @@ const Header = () => {
 };
 
 const SuperHeader = styled.div`
-  @media ${QUERIES.laptopAndUp} {
-    display: none;
-  }
   padding: 16px 0;
   background: var(--color-gray-900);
   color: white;
+
+  @media ${QUERIES.laptopAndUp} {
+    display: none;
+  }
 `;
 
 const Row = styled(MaxWidthWrapper)`
@@ -77,38 +78,51 @@ const ActionGroup = styled.div`
     display: block;
   }
 `;
+const DesktopActionGroup = styled(ActionGroup)`
+  display: none;
+
+  @media ${QUERIES.laptopAndUp} {
+    display: flex;
+  }
+`
+
 const SubscribeActionGroup = styled(ActionGroup)`
-  padding-top: 1.5rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-end;
-  gap: 2px;
-  & > a {
+  display: none;
+
+  @media ${QUERIES.laptopAndUp} {
+    display: revert;
+    position: relative;
+    justify-self: end;
+  }
+ `
+const SubLink = styled.a`
+    position: absolute;
+    width: 100%;
+    margin-top: 8px;
+    text-align: center;
     font-style: italic;
     font-weight: 200;
     font-size: 0.8rem;
-    color: ${COLORS.gray[900]};
+    color: var(--color-gray-900);
     text-decoration-line: underline;
-  }
-  `
+`
 
 const MainHeader = styled(MaxWidthWrapper)`
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: center;
     margin-top: 32px;
     margin-bottom: 48px;
 
-  & ${ActionGroup} {
-    display: none;
-  }
-  @media ${QUERIES.laptopAndUp} {
-    justify-content: space-between;
-    & ${ActionGroup} {
-      display: flex;
+    @media ${QUERIES.tabletAndUp} {
+      margin-bottom: 72px;
+      margin-top: 48px;
     }
-  }
+
+    @media ${QUERIES.laptopAndUp} {
+      grid-template-columns: 1fr auto 1fr;
+      margin-bottom: 80px;
+      margin-top: 16px;
+    }
 `;
 
 export default Header;
