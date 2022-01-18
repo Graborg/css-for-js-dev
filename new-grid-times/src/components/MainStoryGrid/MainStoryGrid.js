@@ -107,11 +107,13 @@ const StoryList = styled.div`
 
 const OpinionWrapper = styled.div`
   grid-area: opinion-stories;
-  padding-bottom: 16px;
+  @media ${QUERIES.laptopAndUp} {
+    padding-bottom: 16px;
+  }
 `
 const OpinionSection = styled.section`
   @media ${QUERIES.tabletOnly} {
-    padding: 4px;
+    padding: 0 4px;
       & ${StoryList} {
         flex-direction: row;
         padding: 0 4px;
@@ -119,7 +121,6 @@ const OpinionSection = styled.section`
   }
   
   @media ${QUERIES.laptopAndUp} {
-    padding-bottom: 16px;
     padding-left: 16px;
     border-left: 1px solid var(--color-gray-300);
   }

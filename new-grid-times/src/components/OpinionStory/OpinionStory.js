@@ -26,7 +26,12 @@ const OpinionLink = styled.a`
       padding-top: 0;
     }
   }
+  &:last-child {
+    padding-bottom: 0;
+  }
   @media ${QUERIES.tabletOnly} {
+    padding: 0;
+    padding-top: 16px;
     &:not(:nth-child(1)) {
       border: 0;
     }
