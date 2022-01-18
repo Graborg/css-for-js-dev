@@ -50,6 +50,7 @@ const Abstract = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 8;
   overflow: hidden;
+
   @media ${QUERIES.tabletAndUp} {
     -webkit-line-clamp: 16;
   }

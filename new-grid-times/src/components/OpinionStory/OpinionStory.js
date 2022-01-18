@@ -16,26 +16,8 @@ const OpinionStory = ({id, title, author, avatar}) => {
   );
 };
 const OpinionLink = styled.a`
-  padding: 16px 0;
   flex: 1;
-  &:not(:nth-child(1)) {
-    border-top: 1px solid var(--color-gray-300);
-  }
-  @media ${QUERIES.laptopAndUp}{
-    &:nth-child(1) {
-      padding-top: 0;
-    }
-  }
-  &:last-child {
-    padding-bottom: 0;
-  }
-  @media ${QUERIES.tabletOnly} {
-    padding: 0;
-    padding-top: 16px;
-    &:not(:nth-child(1)) {
-      border: 0;
-    }
-  }
+
 `
 
 const Wrapper = styled.article`
