@@ -60,7 +60,7 @@ const Wrapper = styled.div`
     'advertisement';
 
   @media ${QUERIES.tabletAndUp} {
-    gap: 0;
+    gap: 48px 0;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr; 
     grid-template-areas:
@@ -70,6 +70,7 @@ const Wrapper = styled.div`
   }
 
   @media ${QUERIES.laptopAndUp} {
+    gap: 0;
     grid-template-columns: 9fr 6fr 4fr;
     grid-template-rows: 1fr; 
     grid-template-areas:
@@ -84,15 +85,14 @@ const Wrapper = styled.div`
 const MainStorySection = styled.section`
   grid-area: main-story;
   @media ${QUERIES.tabletAndUp} {
-    padding-right: 24px;
+    padding-right: 16px;
     border-right: 1px solid var(--color-gray-300);
   }
 `;
 
 const SecondaryStorySection = styled.section`
   @media ${QUERIES.tabletAndUp}{
-    padding-left: 24px;
-    padding-bottom: 16px;
+    padding-left: 16px;
   }
   @media ${QUERIES.laptopAndUp} {
     padding-right: 16px;
@@ -133,7 +133,6 @@ const AdWrapper = styled.div`
 `
 
 const AdvertisementSection = styled.section`
-  padding-top: 16px;
   @media ${QUERIES.laptopAndUp} {
     border-top: 1px solid var(--color-gray-300);
   }

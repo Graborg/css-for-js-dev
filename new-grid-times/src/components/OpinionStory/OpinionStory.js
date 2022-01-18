@@ -36,7 +36,7 @@ const OpinionLink = styled.a`
 const Wrapper = styled.article`
   flex-direction: row-reverse;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   color: var(--color-gray-900);
   display: flex;
   
