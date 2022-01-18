@@ -52,7 +52,7 @@ const Header = () => {
 };
 
 const SuperHeader = styled.div`
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: none;
   }
   padding: 16px 0;
@@ -103,7 +103,7 @@ const MainHeader = styled(MaxWidthWrapper)`
   & ${ActionGroup} {
     display: none;
   }
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     justify-content: space-between;
     & ${ActionGroup} {
       display: flex;
