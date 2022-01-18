@@ -1,6 +1,7 @@
 import React from 'react';
-import { Twitter, Facebook } from 'react-feather';
+import {Twitter, Facebook} from 'react-feather';
 import styled from 'styled-components/macro';
+import {QUERIES} from '../../constants';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 
 import VisuallyHidden from '../VisuallyHidden';
@@ -10,7 +11,7 @@ const Footer = () => {
     <Wrapper>
       <MaxWidthWrapper>
         <TopRow>
-          <nav>
+          <NavWrapper>
             <TopNavList>
               <li>
                 <a href="/about">About</a>
@@ -22,7 +23,7 @@ const Footer = () => {
                 <a href="/contact">Contact Us</a>
               </li>
             </TopNavList>
-          </nav>
+          </NavWrapper>
           <Social>
             <a href="/">
               <VisuallyHidden>
@@ -39,7 +40,7 @@ const Footer = () => {
           </Social>
         </TopRow>
         <MainNavArea>
-          <nav>
+          <NavWrapper>
             <MainNavHeading>Discover Content</MainNavHeading>
             <MainNavList>
               <li>
@@ -58,8 +59,8 @@ const Footer = () => {
                 <a href="/oped">Opinion and Editorial</a>
               </li>
             </MainNavList>
-          </nav>
-          <nav>
+          </NavWrapper>
+          <NavWrapper>
             <MainNavHeading>Regional Websites</MainNavHeading>
             <MainNavList>
               <li>
@@ -78,8 +79,8 @@ const Footer = () => {
                 <a href="/au">New Grid Australia</a>
               </li>
             </MainNavList>
-          </nav>
-          <nav>
+          </NavWrapper>
+          <NavWrapper>
             <MainNavHeading>Careers</MainNavHeading>
             <MainNavList>
               <li>
@@ -92,8 +93,8 @@ const Footer = () => {
                 <a href="/culture">Company Culture</a>
               </li>
             </MainNavList>
-          </nav>
-          <nav>
+          </NavWrapper>
+          <NavWrapper>
             <MainNavHeading>Legal and Privacy</MainNavHeading>
             <MainNavList>
               <li>
@@ -112,7 +113,7 @@ const Footer = () => {
                 <a href="/tos">Terms and Conditions</a>
               </li>
             </MainNavList>
-          </nav>
+          </NavWrapper>
         </MainNavArea>
       </MaxWidthWrapper>
       <SubfooterWrapper>
@@ -144,6 +145,14 @@ const TopRow = styled.div`
   font-size: 0.875rem;
   border-bottom: 1px solid var(--color-gray-700);
   padding: 24px 0;
+  @media ${QUERIES.tabletAndUp}{
+    flex-direction: row;
+    justify-content: center;
+    gap: 48px;
+  }
+  @media ${QUERIES.laptopAndUp}{
+    justify-content: flex-end;
+  }
 `;
 
 const Social = styled.div`
@@ -170,7 +179,19 @@ const MainNavArea = styled.div`
   gap: 32px;
   padding: 32px 0 48px;
   text-align: center;
+  @media ${QUERIES.tabletAndUp} {
+    display: grid;
+    grid-template-columns:
+      repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center;
+  }
 `;
+
+const NavWrapper = styled.nav`
+  @media ${QUERIES.tabletAndUp} {
+    text-align: left
+  }
+`
 
 const MainNavHeading = styled.h2`
   font-size: 1.125rem;
@@ -196,6 +217,9 @@ const Subfooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media ${QUERIES.laptopAndUp} {
+    align-items: flex-start;
+  }
 `;
 
 const Logo = styled.a`
