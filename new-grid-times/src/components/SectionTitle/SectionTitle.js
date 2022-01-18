@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components/macro';
 
-const SectionTitle = ({ children, cornerLink }) => {
+const SectionTitle = ({children, cornerLink}) => {
   return (
     <Wrapper>
       <Title>{children}</Title>
@@ -25,7 +25,6 @@ const Title = styled.h2`
   color: var(--color-gray-900);
   font-weight: var(--font-weight-bold);
   font-size: 1.5rem;
-  margin-bottom: 1rem;
 `;
 
 const CornerLink = styled.a`

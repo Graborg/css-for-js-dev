@@ -17,8 +17,14 @@ const OpinionStory = ({id, title, author, avatar}) => {
 };
 const OpinionLink = styled.a`
   padding: 16px 0;
+  flex: 1;
   &:not(:nth-child(1)) {
     border-top: 1px solid var(--color-gray-300);
+  }
+  @media ${QUERIES.laptopAndUp}{
+    &:nth-child(1) {
+      padding-top: 0;
+    }
   }
   @media ${QUERIES.tabletOnly} {
     &:not(:nth-child(1)) {
@@ -33,7 +39,9 @@ const Wrapper = styled.article`
   align-items: center;
   color: var(--color-gray-900);
   display: flex;
+  
   @media ${QUERIES.tabletOnly} {
+    gap: 8px;
     flex-direction: column;
     align-items: flex-start;
   }
