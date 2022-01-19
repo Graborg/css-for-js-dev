@@ -47,45 +47,44 @@ const SpecialtyStoryGrid = () => {
 
 const Wrapper = styled.div`
   display: grid;
+  gap: 64px;
 
   @media ${QUERIES.laptopAndUp}{
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+    gap: 0;
   }
 `;
 
-const MarketsSection = styled.section`
-  @media ${QUERIES.laptopAndUp}{
-    padding-right: 16px;
-  }
-`;
+const MarketsSection = styled.section``;
 
 const MarketCards = styled.div`
   display: grid;
-  gap: 16px;
-  padding: 24px 0;
   grid-template-columns:
     repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  padding-top: 24px;
 `;
 
 const SportsSection = styled.section`
-  @media ${QUERIES.tabletAndUp}{
-    overflow: hidden;
-  }
+  overflow: hidden;
 
   @media ${QUERIES.laptopAndUp}{
     padding-left: 16px;
+    margin-left: 16px;
     border-left: 1px solid var(--color-gray-300);
   }
 `;
 
 const SportsStories = styled.div`
-  padding-top: 24px;
   display: grid;
   grid-template-columns:
     repeat(auto-fill, minmax(140px, 1fr));
   gap: 16px;
+  padding-top: 24px;
+
   @media ${QUERIES.tabletAndUp}{
+    grid-template-columns: revert;
     display: flex;
     overflow: auto;
   }

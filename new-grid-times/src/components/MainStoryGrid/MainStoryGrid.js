@@ -34,13 +34,13 @@ const MainStoryGrid = () => {
       <OpinionWrapper>
         <OpinionSection>
           <SectionTitle>Opinion</SectionTitle>
-          <StoryList>
+          <OpinionStoryList>
             {OPINION_STORIES.map((story, index) => (
               <OpinionStoryWrapper key={story.id}>
                 <OpinionStory {...story} />
               </OpinionStoryWrapper>
             ))}
-          </StoryList>
+          </OpinionStoryList>
         </OpinionSection>
       </OpinionWrapper>
 
@@ -138,10 +138,14 @@ const StoryList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  @media ${QUERIES.tabletOnly} {
-      flex-direction: row;
-  }
 `;
+
+const OpinionStoryList = styled(StoryList)`
+  @media ${QUERIES.tabletOnly} {
+    flex-direction: row;
+    gap: 32px;
+  }
+`
 
 const OpinionWrapper = styled.div`
   grid-area: opinion-stories;
