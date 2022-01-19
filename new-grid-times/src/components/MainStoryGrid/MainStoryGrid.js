@@ -24,9 +24,9 @@ const MainStoryGrid = () => {
       <SecondaryStorySection>
         <StoryList>
           {SECONDARY_STORIES.map((story, index) => (
-            <VerticalStoryWrapper key={story.id}>
+            <SecondStoryWrapper key={story.id}>
               <SecondaryStory {...story} />
-            </VerticalStoryWrapper>
+            </SecondStoryWrapper>
           ))}
         </StoryList>
       </SecondaryStorySection>
@@ -36,9 +36,9 @@ const MainStoryGrid = () => {
           <SectionTitle>Opinion</SectionTitle>
           <StoryList>
             {OPINION_STORIES.map((story, index) => (
-              <VerticalStoryWrapper key={story.id}>
+              <OpinionStoryWrapper key={story.id}>
                 <OpinionStory {...story} />
-              </VerticalStoryWrapper>
+              </OpinionStoryWrapper>
             ))}
           </StoryList>
         </OpinionSection>
@@ -54,26 +54,30 @@ const MainStoryGrid = () => {
 };
 
 const VerticalStoryWrapper = styled.div`
+  flex: 1;
   padding-top: 16px;
-  width: 100%;
-
-  &:last-child {
-    padding-bottom: 0;
-  }
 
   &:not(:first-child) {
     border-top: 1px solid var(--color-gray-300);
   }
+`
 
-  @media ${QUERIES.laptopAndUp}{
-    &:first-child {
-      padding-top: 0;
+const SecondStoryWrapper = styled(VerticalStoryWrapper)`
+  @media ${QUERIES.tabletAndUp} {
+    &:first-child{
+      padding-top: revert;
+    }
+    &:not(:first-child) {
+      border-top: 1px solid var(--color-gray-300);
     }
   }
+`
 
-  @media ${QUERIES.tabletOnly} {
-    &:not(:first-child) {
-      border: 0;
+const OpinionStoryWrapper = styled(VerticalStoryWrapper)`
+  @media ${QUERIES.tabletOnly} {
+    padding: 0 4px;
+    &:not(:first-child) {
+      border: revert;
     }
   }
 `
@@ -99,8 +103,7 @@ const Wrapper = styled.div`
 
   @media ${QUERIES.laptopAndUp} {
     gap: 0;
-    grid-template-columns: 9fr 6fr 4fr;
-    grid-template-rows: 1fr; 
+    grid-template-columns: 5fr 4fr 3fr;
     grid-template-areas:
       'main-story secondary-stories opinion-stories'
       'main-story secondary-stories opinion-stories'
@@ -135,9 +138,8 @@ const StoryList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-
-  @media ${QUERIES.tabletAndUp} {
-    gap: 32px;
+  @media ${QUERIES.tabletOnly} {
+      flex-direction: row;
   }
 `;
 
@@ -145,26 +147,21 @@ const OpinionWrapper = styled.div`
   grid-area: opinion-stories;
 
   @media ${QUERIES.laptopAndUp} {
-    padding-bottom: 16px;
+    border-left: 1px solid var(--color-gray-300);
+    margin-bottom: 16px;
   }
 `
 const OpinionSection = styled.section`
-  @media ${QUERIES.tabletOnly} {
-    padding: 0 4px;
-      & ${StoryList} {
-        flex-direction: row;
-        padding: 0 4px;
-      }
-  }
+  padding: 0 4px;
   
   @media ${QUERIES.laptopAndUp} {
     padding-left: 16px;
-    border-left: 1px solid var(--color-gray-300);
   }
 `;
 
 const AdWrapper = styled.div`
   grid-area: advertisement;
+
   @media ${QUERIES.laptopAndUp} {
     padding-left: 16px;
   }
@@ -172,6 +169,7 @@ const AdWrapper = styled.div`
 
 const AdvertisementSection = styled.section`
   @media ${QUERIES.laptopAndUp} {
+    padding-top: 16px;
     border-top: 1px solid var(--color-gray-300);
   }
 `;

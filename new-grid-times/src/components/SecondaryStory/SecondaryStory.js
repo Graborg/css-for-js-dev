@@ -30,9 +30,9 @@ const Wrapper = styled.article`
     grid-template-columns: 1fr;
     grid-template-rows: 120px 1fr 1fr;
     grid-template-areas:
-      'image image'
-      'heading heading'
-      'abstract abstract'
+      'image'
+      'heading' 
+      'abstract'
   }
 `;
 
