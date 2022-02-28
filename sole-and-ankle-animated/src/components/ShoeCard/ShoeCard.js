@@ -35,7 +35,9 @@ const ShoeCard = ({
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
-          <Image alt="" src={imageSrc} />
+          <Wrapper2>
+            <Image alt="" src={imageSrc} />
+          </Wrapper2>
           {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
           {variant === 'new-release' && (
             <NewFlag>Just released!</NewFlag>
@@ -75,23 +77,50 @@ const Link = styled.a`
 
 const Wrapper = styled.article``;
 
-const ImageWrapper = styled.div`
-  position: relative;
-  border-radius: 16px 16px 4px 4px;
-  background-color: #f5f5f5;
-  overflow: hidden;
-`;
-
 const Image = styled.img`
   width: 100%;
   transition: transform 200ms;
   border-radius: 16px 16px 4px 4px;
+`;
 
-  &:hover { 
-    transform: scale(1.1) translateY(-4px);
+const Flag = styled.div`
+  position: absolute;
+  top: 12px;
+  right: -4px;
+  background: red;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 10px;
+  font-size: ${14 / 18}rem;
+  font-weight: ${WEIGHTS.bold};
+  color: var(--color-white);
+  border-radius: 2px;
+  transition: transform 100ms 50ms ease-in;
+`;
+
+const SaleFlag = styled(Flag)`
+  background-color: var(--color-primary);
+`;
+const NewFlag = styled(Flag)`
+  background-color: var(--color-secondary);
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  background-color: #f5f5f5;
   border-radius: 16px 16px 4px 4px;
+  &:hover ${Image}{ 
+    transform: scale(1.1) translateY(-4px);
+  }
+  &:hover ${Flag}{ 
+    transform: rotate3d(0,0,5, 30deg)
   }
 `;
+
+const Wrapper2 = styled.div`
+  overflow: hidden;
+  border-radius: 16px 16px 4px 4px;
+`
 
 const Row = styled.div`
   font-size: 1rem;
@@ -118,25 +147,6 @@ const SalePrice = styled.span`
   color: var(--color-primary);
 `;
 
-const Flag = styled.div`
-  position: absolute;
-  top: 12px;
-  right: -4px;
-  background: red;
-  height: 32px;
-  line-height: 32px;
-  padding: 0 10px;
-  font-size: ${14 / 18}rem;
-  font-weight: ${WEIGHTS.bold};
-  color: var(--color-white);
-  border-radius: 2px;
-`;
 
-const SaleFlag = styled(Flag)`
-  background-color: var(--color-primary);
-`;
-const NewFlag = styled(Flag)`
-  background-color: var(--color-secondary);
-`;
 
 export default ShoeCard;
