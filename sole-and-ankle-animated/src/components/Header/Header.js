@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { QUERIES, WEIGHTS } from '../../constants';
+import {QUERIES, WEIGHTS} from '../../constants';
 import Logo from '../Logo';
 import Icon from '../Icon';
 import UnstyledButton from '../UnstyledButton';
@@ -20,12 +20,30 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLinkWrapper>
+            <NavLink href="/sale">Sale</NavLink>
+            <NavLink href="/sale">Sale</NavLink>
+          </NavLinkWrapper>
+          <NavLinkWrapper>
+            <NavLink href="/new">New&nbsp;Releases</NavLink>
+            <NavLink href="/new">New&nbsp;Releases</NavLink>
+          </NavLinkWrapper>
+          <NavLinkWrapper>
+            <NavLink href="/men">Men</NavLink>
+            <NavLink href="/men">Men</NavLink>
+          </NavLinkWrapper>
+          <NavLinkWrapper>
+            <NavLink href="/women">Women</NavLink>
+            <NavLink href="/women">Women</NavLink>
+          </NavLinkWrapper>
+          <NavLinkWrapper>
+            <NavLink href="/kids">Kids</NavLink>
+            <NavLink href="/kids">Kids</NavLink>
+          </NavLinkWrapper>
+          <NavLinkWrapper>
+            <NavLink href="/collections">Collections</NavLink>
+            <NavLink href="/collections">Collections</NavLink>
+          </NavLinkWrapper>
         </DesktopNav>
         <MobileActions>
           <ShoppingBagButton>
@@ -113,16 +131,41 @@ const Filler = styled.div`
     display: none;
   }
 `;
+const NavLinkWrapper = styled.div`
+  overflow: hidden;
+  color: var(--color-gray-900);
+  height: 2rem;
+
+  &:first-of-type {
+    color: var(--color-secondary);
+  }
+`
 
 const NavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--color-gray-900);
+  display: block;
   font-weight: ${WEIGHTS.medium};
+  transform: translateY(0%);
+  transition: transform 500ms;
+  color: inherit;
 
-  &:first-of-type {
-    color: var(--color-secondary);
+  // For reduced motion users
+  ${NavLinkWrapper}:hover & {
+    font-weight: ${WEIGHTS.bold};
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    font-weight: ${WEIGHTS.medium};
+    ${NavLinkWrapper}:hover & {
+      transform: translateY(-100%);
+      transition: transform 150ms ease-out;
+    }
+  }
+
+  &:nth-of-type(2) {
+    font-weight: ${WEIGHTS.bold};
   }
 `;
 
