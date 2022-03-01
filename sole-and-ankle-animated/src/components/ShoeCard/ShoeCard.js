@@ -35,9 +35,9 @@ const ShoeCard = ({
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
-          <Wrapper2>
+          <OverflowWrapper>
             <Image alt="" src={imageSrc} />
-          </Wrapper2>
+          </OverflowWrapper>
           {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
           {variant === 'new-release' && (
             <NewFlag>Just released!</NewFlag>
@@ -75,12 +75,28 @@ const Link = styled.a`
   color: inherit;
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article` `;
+
+
+const ImageWrapper = styled.div`
+  position: relative;
+`;
 
 const Image = styled.img`
+  display: block;
   width: 100%;
-
+  transform-origin: 50% 75%;
   border-radius: 16px 16px 4px 4px;
+  transition: transform 500ms;
+  will-change: transform;
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    ${Link}:hover &,
+    ${Link}:focus & {
+      transform: scale(1.1); 
+      transition: transform 200ms;
+    }
+  }
 `;
 
 const Flag = styled.div`
@@ -95,7 +111,16 @@ const Flag = styled.div`
   font-weight: ${WEIGHTS.bold};
   color: var(--color-white);
   border-radius: 2px;
-  transition: transform 100ms 50ms ease-in;
+  transition: transform 500ms;
+  will-change: transform;
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    ${Link}:hover &,
+    ${Link}:focus & {
+      transition: transform 100ms 50ms ease-in;
+      transform: rotate3d(0,0,5, 30deg)
+    }
+  }
 `;
 
 const SaleFlag = styled(Flag)`
@@ -105,21 +130,7 @@ const NewFlag = styled(Flag)`
   background-color: var(--color-secondary);
 `;
 
-const ImageWrapper = styled.div`
-  position: relative;
-  background-color: #f5f5f5;
-  border-radius: 16px 16px 4px 4px;
-  @media(prefers-reduced-motion: no-preference) {
-  &:hover ${Image}{ 
-    transform: scale(1.1) translateY(-4px);
-  }
-  &:hover ${Flag}{ 
-    transform: rotate3d(0,0,5, 30deg)
-  }
-  }
-`;
-
-const Wrapper2 = styled.div`
+const OverflowWrapper = styled.div`
   overflow: hidden;
   border-radius: 16px 16px 4px 4px;
 `
