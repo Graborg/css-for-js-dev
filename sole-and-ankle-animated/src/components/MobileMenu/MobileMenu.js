@@ -3,7 +3,7 @@ import React from 'react';
 import styled, {keyframes} from 'styled-components/macro';
 import {DialogOverlay, DialogContent} from '@reach/dialog';
 
-import {QUERIES, WEIGHTS} from '../../constants';
+import {WEIGHTS} from '../../constants';
 
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
@@ -14,7 +14,7 @@ const MobileMenu = ({isOpen, onDismiss}) => {
     <Overlay isOpen={isOpen} onDismiss={onDismiss} style={{
       '--fade-in-backdrop-duration': "350ms",
       '--slide-in-duration': "500ms",
-      '--fade-in-text-duration': "800ms"
+      '--fade-in-text-duration': "250ms"
     }}>
       <Content aria-label="Menu">
         <CloseButton onClick={onDismiss}>
@@ -58,10 +58,12 @@ const slideInMenu = keyframes`
 `
 const fadeInItems = keyframes`
   from {
+    transform: translateX(30%);
     opacity: 0; 
   }
   to {
     opacity: 100%; 
+    transform: translateX(0);
   }
 `
 
@@ -100,8 +102,6 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  animation: ${fadeInItems} var(--fade-in-text-duration) ease-in both;
-  animation-delay: var(--fade-in-backdrop-duration);
 `;
 
 const NavLink = styled.a`
@@ -110,9 +110,32 @@ const NavLink = styled.a`
   text-decoration: none;
   font-size: 1.125rem;
   text-transform: uppercase;
+  
+  animation: ${fadeInItems} calc(var(--fade-in-text-duration) * var(--index)) ease both;
+  animation-delay: var(--fade-in-backdrop-duration);
+  
 
   &:first-of-type {
     color: var(--color-secondary);
+  }
+
+  :nth-of-type(1) {
+    --index: 1;
+  }
+  :nth-of-type(2) {
+    --index: 2;
+  }
+  :nth-of-type(3) {
+    --index: 3;
+  }
+  :nth-of-type(4) {
+    --index: 4;
+  }
+  :nth-of-type(5) {
+    --index: 5;
+  }
+  :nth-of-type(6) {
+    --index: 6;
   }
 `;
 
