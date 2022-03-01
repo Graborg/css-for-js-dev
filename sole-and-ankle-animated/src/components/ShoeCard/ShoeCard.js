@@ -79,7 +79,7 @@ const Wrapper = styled.article``;
 
 const Image = styled.img`
   width: 100%;
-  transition: transform 200ms;
+
   border-radius: 16px 16px 4px 4px;
 `;
 
@@ -109,11 +109,13 @@ const ImageWrapper = styled.div`
   position: relative;
   background-color: #f5f5f5;
   border-radius: 16px 16px 4px 4px;
+  @media(prefers-reduced-motion: no-preference) {
   &:hover ${Image}{ 
     transform: scale(1.1) translateY(-4px);
   }
   &:hover ${Flag}{ 
     transform: rotate3d(0,0,5, 30deg)
+  }
   }
 `;
 

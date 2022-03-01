@@ -13,7 +13,7 @@ const MobileMenu = ({isOpen, onDismiss}) => {
   return (
     <Overlay isOpen={isOpen} onDismiss={onDismiss} style={{
       '--fade-in-backdrop-duration': "350ms",
-      '--slide-in-duration': "500ms",
+      '--slide-in-duration': "4500ms",
       '--fade-in-text-duration': "250ms"
     }}>
       <Content aria-label="Menu">
@@ -50,10 +50,10 @@ const fadeBackdrop = keyframes`
 `
 const slideInMenu = keyframes`
   from {
-    transform: translateX(100%) 
+    transform: rotateY(-90deg) ;
   }
   to {
-    transform: translateX(0) 
+    transform: rotateY(0) ;
   }
 `
 const fadeInItems = keyframes`
@@ -76,7 +76,9 @@ const Overlay = styled(DialogOverlay)`
   background: var(--color-backdrop);
   display: flex;
   justify-content: flex-end;
-  animation: ${fadeBackdrop} var(--fade-in-backdrop-duration);
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${fadeBackdrop} var(--fade-in-backdrop-duration);
+  }
 `;
 
 const Content = styled(DialogContent)`
@@ -86,8 +88,11 @@ const Content = styled(DialogContent)`
   padding: 24px 32px;
   display: flex;
   flex-direction: column;
-  animation: ${slideInMenu} var(--slide-in-duration) cubic-bezier(.02,.73,.3,1.04) both;
-  animation-delay: calc(var(--fade-in-backdrop-duration) - 100ms);
+  transform-origin: center right; 
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${slideInMenu} var(--slide-in-duration) cubic-bezier(.02,.73,.3,1.04) both;
+    animation-delay: calc(var(--fade-in-backdrop-duration) - 100ms);
+  }
 `;
 
 const CloseButton = styled(UnstyledButton)`
@@ -111,8 +116,10 @@ const NavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   
-  animation: ${fadeInItems} calc(var(--fade-in-text-duration) * var(--index)) ease both;
-  animation-delay: var(--fade-in-backdrop-duration);
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${fadeInItems} calc(var(--fade-in-text-duration) * var(--index)) ease both;
+    animation-delay: var(--fade-in-backdrop-duration);
+  }
   
 
   &:first-of-type {
