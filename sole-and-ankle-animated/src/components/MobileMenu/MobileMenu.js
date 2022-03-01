@@ -1,17 +1,21 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import styled from 'styled-components/macro';
-import { DialogOverlay, DialogContent } from '@reach/dialog';
+import styled, {keyframes} from 'styled-components/macro';
+import {DialogOverlay, DialogContent} from '@reach/dialog';
 
-import { QUERIES, WEIGHTS } from '../../constants';
+import {QUERIES, WEIGHTS} from '../../constants';
 
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
 
-const MobileMenu = ({ isOpen, onDismiss }) => {
+const MobileMenu = ({isOpen, onDismiss}) => {
   return (
-    <Overlay isOpen={isOpen} onDismiss={onDismiss}>
+    <Overlay isOpen={isOpen} onDismiss={onDismiss} style={{
+      '--fade-in-backdrop-duration': "350ms",
+      '--slide-in-duration': "500ms",
+      '--fade-in-text-duration': "800ms"
+    }}>
       <Content aria-label="Menu">
         <CloseButton onClick={onDismiss}>
           <Icon id="close" />
@@ -32,9 +36,34 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
           <SubLink href="/contact">Contact Us</SubLink>
         </Footer>
       </Content>
-    </Overlay>
+    </Overlay >
   );
 };
+
+const fadeBackdrop = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+`
+const slideInMenu = keyframes`
+  from {
+    transform: translateX(100%) 
+  }
+  to {
+    transform: translateX(0) 
+  }
+`
+const fadeInItems = keyframes`
+  from {
+    opacity: 0; 
+  }
+  to {
+    opacity: 100%; 
+  }
+`
 
 const Overlay = styled(DialogOverlay)`
   position: fixed;
@@ -45,6 +74,7 @@ const Overlay = styled(DialogOverlay)`
   background: var(--color-backdrop);
   display: flex;
   justify-content: flex-end;
+  animation: ${fadeBackdrop} var(--fade-in-backdrop-duration);
 `;
 
 const Content = styled(DialogContent)`
@@ -54,6 +84,8 @@ const Content = styled(DialogContent)`
   padding: 24px 32px;
   display: flex;
   flex-direction: column;
+  animation: ${slideInMenu} var(--slide-in-duration) cubic-bezier(.02,.73,.3,1.04) both;
+  animation-delay: calc(var(--fade-in-backdrop-duration) - 100ms);
 `;
 
 const CloseButton = styled(UnstyledButton)`
@@ -63,10 +95,13 @@ const CloseButton = styled(UnstyledButton)`
   padding: 16px;
 `;
 
+
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  animation: ${fadeInItems} var(--fade-in-text-duration) ease-in both;
+  animation-delay: var(--fade-in-backdrop-duration);
 `;
 
 const NavLink = styled.a`
