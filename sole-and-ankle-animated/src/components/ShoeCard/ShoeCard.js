@@ -117,8 +117,8 @@ const Flag = styled.div`
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     ${Link}:hover &,
     ${Link}:focus & {
-      transition: transform 100ms 50ms ease-in;
-      transform: rotate3d(0,0,5, 30deg)
+      transition: transform 700ms 100ms cubic-bezier(.22,2.55,1,1.75);
+      transform: scale(1.1);
     }
   }
 `;
