@@ -20,29 +20,29 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLinkWrapper>
-            <NavLink href="/sale">Sale</NavLink>
-            <NavLink href="/sale">Sale</NavLink>
+          <NavLinkWrapper tabIndex="0" >
+            <NavLink tabIndex="-1" href="/sale">Sale</NavLink>
+            <NavLink tabIndex="-1" href="/sale">Sale</NavLink>
           </NavLinkWrapper>
-          <NavLinkWrapper>
-            <NavLink href="/new">New&nbsp;Releases</NavLink>
-            <NavLink href="/new">New&nbsp;Releases</NavLink>
+          <NavLinkWrapper tabIndex="0" >
+            <NavLink tabIndex="-1" href="/new">New&nbsp;Releases</NavLink>
+            <NavLink tabIndex="-1" href="/new">New&nbsp;Releases</NavLink>
           </NavLinkWrapper>
-          <NavLinkWrapper>
-            <NavLink href="/men">Men</NavLink>
-            <NavLink href="/men">Men</NavLink>
+          <NavLinkWrapper tabIndex="0" >
+            <NavLink tabIndex="-1" href="/men">Men</NavLink>
+            <NavLink tabIndex="-1" href="/men">Men</NavLink>
           </NavLinkWrapper>
-          <NavLinkWrapper>
-            <NavLink href="/women">Women</NavLink>
-            <NavLink href="/women">Women</NavLink>
+          <NavLinkWrapper tabIndex="0" >
+            <NavLink tabIndex="-1" href="/women">Women</NavLink>
+            <NavLink tabIndex="-1" href="/women">Women</NavLink>
           </NavLinkWrapper>
-          <NavLinkWrapper>
-            <NavLink href="/kids">Kids</NavLink>
-            <NavLink href="/kids">Kids</NavLink>
+          <NavLinkWrapper tabIndex="0" >
+            <NavLink tabIndex="-1" href="/kids">Kids</NavLink>
+            <NavLink tabIndex="-1" href="/kids">Kids</NavLink>
           </NavLinkWrapper>
-          <NavLinkWrapper>
-            <NavLink href="/collections">Collections</NavLink>
-            <NavLink href="/collections">Collections</NavLink>
+          <NavLinkWrapper tabIndex="0" >
+            <NavLink tabIndex="-1" href="/collections">Collections</NavLink>
+            <NavLink tabIndex="-1" href="/collections">Collections</NavLink>
           </NavLinkWrapper>
         </DesktopNav>
         <MobileActions>
@@ -158,6 +158,7 @@ const NavLink = styled.a`
 
   @media (prefers-reduced-motion: no-preference) {
     font-weight: ${WEIGHTS.medium};
+    ${NavLinkWrapper}:focus &, 
     ${NavLinkWrapper}:hover & {
       transform: translateY(-100%);
       transition: transform 150ms ease-out;
