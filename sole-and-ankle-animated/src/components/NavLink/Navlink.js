@@ -15,6 +15,7 @@ const NavLink = ({children, ...delegated}) => {
 
 
 const Wrapper = styled.a`
+  display: block;
   overflow: hidden;
   will-change: transform;
   text-decoration: none;
